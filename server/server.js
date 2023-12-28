@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/gemini", async (req, res) => {
-  const pergunta = req.body.texto;
+  const pergunta = await req.body.texto;
   const resposta = await gemini(pergunta);
   res.json({resposta: resposta});
 });
