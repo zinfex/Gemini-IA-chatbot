@@ -33,6 +33,7 @@ function App() {
     // setPergunta('O que é vscode?')
     
     try {
+      setResposaIA('...')
       await axios.post('http://localhost:3001/gemini', {
         texto: values.texto
       }).then((response) => {
