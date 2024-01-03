@@ -7,40 +7,44 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBIcon,
 } from "mdb-react-ui-kit";
 import "./Login.css";
 import axios from "axios";
 
 function Login() {
-    const [values, setValues] = useState()
+  const [values, setValues] = useState();
 
-  function SignIn() {
-      try {
-          axios.post("http://localhost:3001/usuarios/login", {
-              email: values.email,
-              senha: values.senha
-          }).then((res) => {
-            alert("Bem vindo")
-            location.href = "/"
-          })
-      } catch (error) {
-          console.log(error)
-      }
+  async function SignIn() {
+    try {
+      await axios
+        .post("http://localhost:3001/usuarios/login", {
+          email: values.email,
+          senha: values.senha,
+        })
+        .then((res) => {
+          alert("Bem vindo");
+          localStorage.setItem("token", res.data.data.token);
+          location.href = "/";
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function SignUp() {
-      try {
-        axios.post("http://localhost:3001/usuarios", {
-            email: values.email,
-            senha: values.senha
-        }).then((res) => {
-            alert("Conta criada")
-            location.href = "/login"
+    try {
+      axios
+        .post("http://localhost:3001/usuarios", {
+          email: values.email,
+          senha: values.senha,
         })
-      } catch (error) {
-        console.log(error)
-      }
+        .then((res) => {
+          alert("Conta criada");
+          location.href = "/login";
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const handleChangeValues = (value) => {
@@ -93,7 +97,13 @@ function Login() {
                     Esqueceu a senha?
                   </a>
                 </p>
-                <MDBBtn outline className="mx-2 px-5" color="white" size="lg" onClick={SignIn}>
+                <MDBBtn
+                  outline
+                  className="mx-2 px-5"
+                  color="white"
+                  size="lg"
+                  onClick={SignIn}
+                >
                   Entrar
                 </MDBBtn>
 
