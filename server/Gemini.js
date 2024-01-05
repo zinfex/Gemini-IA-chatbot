@@ -21,11 +21,11 @@ async function gemini(pergunta) {
     },
   });
 
-  const result = await chat.sendMessage(pergunta)
-  const response = await result.response
-  const text = response.text()
+  const result = await chat.sendMessage(pergunta);
+  const response = await result.response;
+  const text = response.text();
 
-  return text
+  return text;
 }
 
 export default gemini;

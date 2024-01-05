@@ -33,15 +33,7 @@ function Login() {
 
   function SignUp() {
     try {
-      axios
-        .post("http://localhost:3001/usuarios", {
-          email: values.email,
-          senha: values.senha,
-        })
-        .then((res) => {
-          alert("Conta criada");
-          location.href = "/login";
-        });
+        location.href = '/cadastrar'
     } catch (error) {
       console.log(error);
     }
