@@ -1,6 +1,25 @@
 body{
-    background-color: rgba(10, 24, 67, 0.925);
+    background-color: rgba(14, 22, 46, 0.925);
     justify-content: start;
     align-items: start;
     height: 100vh;
+}
+
+@media (max-width: 500px) {
+  
+    .col {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background-color: #332D2D;
+    }
+}
+
+.captcha {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: fit-content;
+    margin-bottom: 25px;
 }

@@ -35,10 +35,14 @@ PrivateRoutes.use((req, res, next) => {
 });
 
 PrivateRoutes.post("/gemini", async (req, res) => {
-  const pergunta = await req.body.texto;
-  const resposta = await gemini(pergunta);
-  res.json({ resposta: resposta });
-});
+  try {
+    const pergunta = await req.body.texto;
+    const resposta = await gemini(pergunta);
+    res.json({ resposta: resposta });
+  } catch(e) {
+    res.json({ resposta: "Erro, não foi possível encontrar uma resposta."})
+  }
+}); 
 
 PrivateRoutes.use(UsuariosRoutes);
 

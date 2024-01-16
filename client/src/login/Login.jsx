@@ -13,27 +13,35 @@ import axios from "axios";
 
 function Login() {
   const [values, setValues] = useState();
-
+  const [captcha, setCaptcha] = useState('fdafsx');
+  
   async function SignIn() {
-    try {
-      await axios
-        .post("http://localhost:3001/usuarios/login", {
-          email: values.email,
-          senha: values.senha,
-        })
-        .then((res) => {
-          alert("Bem vindo");
-          localStorage.setItem("token", res.data.data.token);
-          location.href = "/";
-        });
-    } catch (error) {
-      console.log(error);
+
+    if(values.rcaptcha == captcha) {
+      try {
+        await axios
+          .post("http://localhost:3001/usuarios/login", {
+            email: values.email,
+            senha: values.senha,
+          })
+          .then((res) => {
+            alert("Bem vindo");
+            localStorage.setItem("token", res.data.data.token);
+            location.href = "/gemini";
+          });
+      } catch (error) {
+        alert("Email ou senha incorretos");
+        console.log(error);
+      }
+    } else {
+      alert('Verificação incorreta')
     }
+
   }
 
   function SignUp() {
     try {
-        location.href = '/cadastrar'
+      location.href = "/cadastrar";
     } catch (error) {
       console.log(error);
     }
@@ -83,12 +91,23 @@ function Login() {
                   name="senha"
                   onChange={handleChangeValues}
                 />
-
-                <p className="small mb-3 pb-lg-2">
+                <p className="small pb-lg-2">
                   <a class="text-white-50" href="#!">
                     Esqueceu a senha?
                   </a>
                 </p>
+
+                <div className="captcha">
+                  <div className="info">{captcha}</div>
+                  <input
+                    type="text" 
+                    className="res" 
+                    name="rcaptcha" 
+                    onChange={handleChangeValues}
+                    placeholder="Digite caracteres acima"
+                  />
+                </div>
+
                 <MDBBtn
                   outline
                   className="mx-2 px-5"

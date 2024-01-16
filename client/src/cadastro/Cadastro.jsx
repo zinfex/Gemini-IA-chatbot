@@ -10,11 +10,12 @@ import {
 } from "mdb-react-ui-kit";
 import "../login/Login.jsx";
 import axios from "axios";
-
+import '../login/Login.css'
 
 function Cadastro() {
 
     const [values, setValues] = useState();
+    const [captcha, setCaptcha] = useState('ifjcyz');
 
     const handleChangeValues = (value) => {
         setValues((prevValue) => ({
@@ -25,6 +26,7 @@ function Cadastro() {
 
     function SignUp() {
 
+      if(values.rcaptcha == captcha) {
         if(values.senha !== values.senha2) {
           alert('Senhas não conrespondem')
         } else {
@@ -41,9 +43,11 @@ function Cadastro() {
           } catch (error) {
             console.log(error);
           }
-        }
-
+        } 
+      } else {
+        alert('Verificação inválida')
       }
+    } 
 
     return (
         <body className="login">
@@ -93,7 +97,17 @@ function Cadastro() {
                       name="senha2"
                       onChange={handleChangeValues}
                     />
-                    
+
+                    <div className="captcha">
+                      <div className="info">{captcha}</div>
+                      <input
+                        type="text" 
+                        className="res" 
+                        name="rcaptcha" 
+                        onChange={handleChangeValues}
+                        placeholder="Digite caracteres acima"
+                      />
+                    </div>           
     
                     <MDBBtn
                       outline

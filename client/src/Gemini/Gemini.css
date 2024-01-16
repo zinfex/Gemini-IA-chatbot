@@ -1,0 +1,36 @@
+.home{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 25px;
+}
+
+body {
+  background-color: rgba(14, 22, 46, 0.925);
+}
+
+.card {
+    width: 100%;
+}
+
+#chat2 .form-control {
+    border-color: transparent;
+  }
+  
+  #chat2 .form-control:focus {
+    border-color: transparent;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+  }
+  
+  .divider:after,
+  .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+  }
+
+  .col-md-10 {
+    padding: 0;
+    width: 100%;
+}

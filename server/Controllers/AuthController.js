@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
 import UsuariosModel from "../Models/UsuariosModel.js";
-import express from "express";
 
 dotenv.config();
 
