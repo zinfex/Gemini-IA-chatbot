@@ -13,8 +13,8 @@ import axios from "axios";
 
 function Login() {
   const [values, setValues] = useState();
-  const [captcha, setCaptcha] = useState('fdafsx');
-  
+  const [captcha, setCaptcha] = useState(Math.random().toString(36).substring(2, 8));
+
   async function SignIn() {
 
     if(values.rcaptcha == captcha) {
@@ -34,7 +34,7 @@ function Login() {
         console.log(error);
       }
     } else {
-      alert('Verificação incorreta')
+      alert('Captcha incorreto')
     }
 
   }
@@ -56,6 +56,9 @@ function Login() {
 
   return (
     <body className="login">
+
+      <img className='iaimg2' src="https://www.hardware.com.br/static/wp/2023/04/03/ameca_transparent_1-e1638371642651-686x686-1.png?fm=png&ixlib=php-3.3.1" alt="" />
+
       <MDBContainer fluid>
         <MDBRow className="d-flex justify-content-center align-items-center h-100">
           <MDBCol col="12">

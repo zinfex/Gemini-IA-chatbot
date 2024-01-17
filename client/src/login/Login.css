@@ -1,12 +1,11 @@
 body{
-    background-color: rgba(14, 22, 46, 0.925);
+    background-color: rgb(11, 16, 31);
     justify-content: start;
     align-items: start;
     height: 100vh;
 }
 
 @media (max-width: 500px) {
-  
     .col {
         margin: 0;
         padding: 0;
@@ -22,4 +21,11 @@ body{
     text-align: center;
     width: fit-content;
     margin-bottom: 25px;
+}
+
+.iaimg2 {
+    position: absolute;
+    width: 500px;
+    right: 0;
+    bottom: 0;
 }

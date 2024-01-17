@@ -15,7 +15,7 @@ import '../login/Login.css'
 function Cadastro() {
 
     const [values, setValues] = useState();
-    const [captcha, setCaptcha] = useState('ifjcyz');
+    const [captcha, setCaptcha] = useState(Math.random().toString(36).substring(2, 8));
 
     const handleChangeValues = (value) => {
         setValues((prevValue) => ({
@@ -45,12 +45,15 @@ function Cadastro() {
           }
         } 
       } else {
-        alert('Verificação inválida')
+        alert('Captcha incorreto')
       }
     } 
 
     return (
         <body className="login">
+
+          <img className='iaimg2' src="https://www.hardware.com.br/static/wp/2023/04/03/ameca_transparent_1-e1638371642651-686x686-1.png?fm=png&ixlib=php-3.3.1" alt="" />
+
           <MDBContainer fluid>
             <MDBRow className="d-flex justify-content-center align-items-center h-100">
               <MDBCol col="12">
