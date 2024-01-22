@@ -25,7 +25,6 @@ function Login() {
             senha: values.senha,
           })
           .then((res) => {
-            alert("Bem vindo");
             localStorage.setItem("token", res.data.data.token);
             location.href = "/gemini";
           });

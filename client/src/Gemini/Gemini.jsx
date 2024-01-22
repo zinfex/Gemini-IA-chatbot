@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FaRegPaperPlane } from "react-icons/fa";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import {
@@ -9,7 +10,6 @@ import {
   MDBCardHeader,
   MDBCardBody,
   MDBCardFooter,
-  MDBIcon,
   MDBBtn,
 } from "mdb-react-ui-kit";
 import "./Gemini.css";
@@ -18,20 +18,19 @@ import Api from "../config/Api.jsx";
 function Gemini() {
   // async function initpage() {
   // }
-  
+
   useEffect(() => {
     // initpage();
 
-    const token = localStorage.getItem("token")
-    if(token == (null || undefined)){
-      location.href = '/login'
-    } 
+    const token = localStorage.getItem("token");
+    if (token == (null || undefined)) {
+      location.href = "/login";
+    }
   }, []);
-  
 
   const [respostaIA, setResposaIA] = useState("Olá, qual sua dúvida?");
   const [values, setValues] = useState("");
-  const [formData, setFormData] = useState(); 
+  const [formData, setFormData] = useState();
 
   const handleChangeValues = (value) => {
     setValues((prevValue) => ({
@@ -42,7 +41,7 @@ function Gemini() {
 
   async function handleButton() {
     try {
-      setFormData();
+      setFormData('');
       setResposaIA("...");
 
       if (values.texto == undefined) {
@@ -56,8 +55,15 @@ function Gemini() {
           Api.get("gemini").then(setResposaIA(response.data.resposta));
         });
       }
+      setFormData()
     } catch (e) {
       console.log(e);
+    }
+  }
+
+  function handleKeyPress(event) {
+    if (event.key == "Enter") {
+      handleButton();
     }
   }
 
@@ -77,9 +83,32 @@ function Gemini() {
             >
               <MDBCardHeader className="d-flex justify-content-between align-items-center p-3">
                 <h5 className="mb-0">Gemini chatbot</h5>
-                <MDBBtn color="primary" size="sm" rippleColor="dark">
-                  Baixar o APP
-                </MDBBtn>
+
+                <div id="headerBtns">
+                  <Link to="/">
+                    <MDBBtn
+                      id="baixaroapp"
+                      color="primary"
+                      size="sm"
+                      rippleColor="dark"
+                      className="btn"
+                    >
+                      Baixar o APP
+                    </MDBBtn>
+                  </Link>
+
+                  <Link to="/">
+                    <MDBBtn
+                      id="baixaroapp"
+                      color="primary"
+                      size="sm"
+                      rippleColor="dark"
+                      className="btn"
+                    >
+                      Início
+                    </MDBBtn>
+                  </Link>
+                </div>
               </MDBCardHeader>
 
               <MDBCardBody>
@@ -93,7 +122,7 @@ function Gemini() {
                   <div>
                     <p
                       className="small p-2 ms-3 mb-1 rounded-3 bg-dark text-light"
-                      style={{ backgroundColor: "#f5f6f7" }}
+                      style={{ backgroundColor: "#f5f6f7", fontSize: 20 }}
                     >
                       {respostaIA}
                     </p>
@@ -101,40 +130,30 @@ function Gemini() {
                 </div>
               </MDBCardBody>
 
-              <MDBCardFooter className="text-muted d-flex justify-content-start align-items-center p-3">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
-                  alt="avatar 3"
-                  style={{ width: "45px", height: "100%" }}
-                />
+              <MDBCardFooter className="text-muted d-flex justify-content-center p-3">
+                <div className="inputBox">
+                  <input
+                    type="text"
+                    placeholder="Mensagem Gemini"
+                    name="texto"
+                    onChange={handleChangeValues}
+                    value={formData}
+                    onKeyDown={handleKeyPress}
+                  />
 
-                <input
-                  type="text"
-                  class="form-control form-control-lg bg-dark text-light"
-                  id="exampleFormControlInput1"
-                  placeholder="Digite a mensagem"
-                  name="texto"
-                  onChange={handleChangeValues}
-                  value={formData}
-                ></input>
-
-                <a className="ms-1 text-muted" href="#!">
-                  <MDBIcon fas icon="paperclip" />
-                </a>
-                <a className="ms-3 text-muted" href="#!">
-                  <MDBIcon fas icon="smile" />
-                </a>
-                <a className="ms-3" href="#!">
-                  <MDBIcon fas icon="paper-plane" />
-                </a>
-                <button
-                  className="text-light btn"
-                  type="submit"
-                  style={{ fontSize: "20px" }}
-                  onClick={handleButton}
-                >
-                  <FaRegPaperPlane />
-                </button>
+                  <button
+                    className="btn btn-primary"
+                    type="submit"
+                    style={{
+                      fontSize: "20px",
+                      paddingInline: 15,
+                      paddingBlock: 0,
+                    }}
+                    onClick={handleButton}
+                  >
+                    <FaRegPaperPlane />
+                  </button>
+                </div>
               </MDBCardFooter>
             </MDBCard>
           </MDBCol>

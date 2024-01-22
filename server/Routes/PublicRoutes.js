@@ -5,7 +5,7 @@ import AuthController from "../Controllers/AuthController.js";
 const PublicRoutes = express.Router();
 
 PublicRoutes.get("/", (req, res) => {
-  res.send("Servidor node: [Gemini IA]");
+  res.send("Servidor [Gemini IA]");
 });
 
 const authController = new AuthController();
