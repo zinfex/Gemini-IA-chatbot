@@ -1,0 +1,11 @@
+.copy {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 60px;
+}

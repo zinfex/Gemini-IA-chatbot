@@ -1,0 +1,20 @@
+.boxterms {
+    background-color: rgba(25, 23, 23, 0.758);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    width: 40%;
+    margin-top: 60px;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.pageterm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -26,7 +26,7 @@ function Login() {
           })
           .then((res) => {
             localStorage.setItem("token", res.data.data.token);
-            location.href = "/gemini";
+            location.href = "/termos";
           });
       } catch (error) {
         alert("Email ou senha incorretos");
