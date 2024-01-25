@@ -1,11 +1,11 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Gemini from './Gemini/Gemini.jsx'
 import Login from './login/Login.jsx';
 import Cadastro from './cadastro/Cadastro.jsx';
-import Home from './home/Home.jsx';
+import Home from './pages/Home/Home.jsx';
 import Sobre from './pages/sobre/Sobre.jsx';
 import Termos from './pages/termos/Termos.jsx';
+import Gemini from './pages/Gemini/Gemini.jsx';
 
 function App() {
   return (

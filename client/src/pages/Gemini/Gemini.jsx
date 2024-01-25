@@ -13,7 +13,7 @@ import {
   MDBBtn,
 } from "mdb-react-ui-kit";
 import "./Gemini.css";
-import Api from "../config/Api.jsx";
+import Api from "../../config/Api.jsx";
 
 function Gemini() {
   // async function initpage() {

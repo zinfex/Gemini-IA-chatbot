@@ -1,5 +1,8 @@
 import "./termos.css";
 import { Link } from "react-router-dom";
+import {
+  MDBBtn,
+} from "mdb-react-ui-kit";
 
 function Termos() {
   return (
@@ -28,7 +31,7 @@ function Termos() {
         </p>
 
         <Link to="/sobre">
-          <button>Aceitar</button>
+          <MDBBtn>Aceitar</MDBBtn>
         </Link>
       </div>
     </div>

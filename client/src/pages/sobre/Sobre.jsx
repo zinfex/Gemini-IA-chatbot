@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import "./sobre.css";
+import {
+  MDBBtn,
+} from "mdb-react-ui-kit";
 
 function Sobre() {
   return (
@@ -34,7 +37,7 @@ function Sobre() {
         </p>
         
         <Link to="/gemini">
-            <button>Avançar</button>
+            <MDBBtn>Avançar</MDBBtn>
         </Link>
       </div>
 
